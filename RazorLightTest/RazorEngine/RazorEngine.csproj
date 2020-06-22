@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0;net472</TargetFrameworks>
+		<PreserveCompilationContext>true</PreserveCompilationContext>
+		<!--<PreserveCompilationReferences>true</PreserveCompilationReferences>
+		<MvcRazorCompileOnPublish>false</MvcRazorCompileOnPublish>
+		<MvcRazorExcludeRefAssembliesFromPublish>false</MvcRazorExcludeRefAssembliesFromPublish>-->
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <NoWarn>1701;1702;CS8370</NoWarn>
+	  <WarningLevel>4</WarningLevel>
+	  <WarningsAsErrors>NU1605</WarningsAsErrors>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="Templates\Test.Success.cshtml" />
+	  <None Remove="Templates\_layout.cshtml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Templates\Test.Success.cshtml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Templates\_layout.cshtml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.2.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.2.0" />
+		<PackageReference Include="RazorLight" Version="2.0.0-beta8" />
+		<!-- Here to satisfy intellisense -->
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.1.0" />
+	</ItemGroup>
+
+</Project>
